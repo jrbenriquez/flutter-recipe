@@ -38,7 +38,20 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        elevation: 0,
+        backgroundColor: Colors.grey.shade200,
+        title: TextFormField(
+          textAlign: TextAlign.center,
+          decoration: InputDecoration(
+            labelText: "Search for recipe",
+          ),
+          keyboardType: TextInputType.text,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(30),
+          ),
+        ),
       ),
       body: Center(
         child: Column(
