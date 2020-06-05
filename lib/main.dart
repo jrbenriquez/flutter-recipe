@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 void main() {
   runApp(MyApp());
@@ -59,57 +60,75 @@ class _MyHomePageState extends State<MyHomePage> {
           SizedBox(
             height: 50.0,
           ),
-          Text(
-            "Simple way to find",
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 25.0,
+          Container(
+            margin: EdgeInsets.symmetric(
+              horizontal: 24.0,
             ),
-          ),
-          Text(
-            "Tasty recipes",
-            style: TextStyle(
-              color: Colors.deepOrangeAccent,
-              fontWeight: FontWeight.bold,
-              fontSize: 25.0,
-            ),
-          ),
-          SizedBox(
-            height: 25.0,
-          ),
-          Row(
-            children: <Widget>[
-              Container(
-                  height: 350.0,
-                  width: 250.0,
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Simple way to find",
+                style: TextStyle(
+                  fontFamily: "Quicksand",
                   color: Colors.black,
-                  margin: EdgeInsets.symmetric(
-                    vertical: 16.0,
-                    horizontal: 24.0,
-                  ),
-                  child: Stack(
-                    children: <Widget>[
-                      recipeCard,
-                      recipeThumbnail,
-                    ],
-                  )),
-              SizedBox(
-                width: 10.0,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25.0,
+                ),
               ),
-              Container(
-                child: Text("Card"),
-                height: 350.0,
-                width: 10.0,
-                color: Colors.black,
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(
+              horizontal: 24.0,
+            ),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "tasty recipes",
+                style: TextStyle(
+                  fontFamily: "Quicksand",
+                  color: Hexcolor("#f9af9c"),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25.0,
+                ),
               ),
-            ],
+            ),
           ),
           SizedBox(
             height: 25.0,
           ),
           Container(
-            color: Colors.deepOrangeAccent,
+            height: 350.0,
+            padding: EdgeInsets.only(
+              left: 60.0,
+            ),
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: <Widget>[
+                Container(
+                  width: 300.0,
+                  height: 300.0,
+                  color: Hexcolor("#FFECD9"),
+                  child: Stack(
+                    children: <Widget>[
+                      CenterRecipe(
+                        "Pancakes",
+                        "120",
+                      ),
+                      myImages(
+                        "https://res.cloudinary.com/norgesgruppen/images/c_scale,dpr_auto,f_auto,q_auto:eco,w_1600/a9ezar46fbxjvuyd8r2z/hjemmelaget-italiensk-pizza-med-bacon",
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 25.0,
+          ),
+          Container(
+            color: Hexcolor("#f9af9c"),
             height: 30.0,
             width: 200.0,
             child: Text(
@@ -125,7 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
 
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.deepOrangeAccent,
+        backgroundColor: Hexcolor("#f9af9c"),
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: Icon(Icons.add),
@@ -134,28 +153,92 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-/*Widgets */
+/* Center recipe widget */
 
-final recipeCard = new Container(
-  height: 350.0,
-  margin: EdgeInsets.only(
-    left: 10.0,
-  ),
-  decoration: BoxDecoration(
-    color: Colors.deepOrangeAccent,
-    shape: BoxShape.rectangle,
-    borderRadius: BorderRadius.circular(8.0),
-  ),
-);
+CenterRecipe(String recipe, String kcal) {
+  return Center(
+    child: Padding(
+      padding: EdgeInsets.all(16.0),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12.0),
+          color: Hexcolor("#FFECD9"),
+        ),
+        child: Container(
+          width: 500.0,
+          height: 350.0,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12.0),
+            color: Hexcolor("#FFECD9"),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 170,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 24.0),
+                    child: Container(
+                      padding: EdgeInsets.only(right: 140.0),
+                      child: Text(
+                        recipe,
+                        style: TextStyle(
+                          fontFamily: "Quicksand",
+                          fontWeight: FontWeight.bold,
+                          fontSize: 33.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 40.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: 10.0,
+                      bottom: 5.0,
+                    ),
+                    child: Container(
+                      padding: EdgeInsets.only(left: 160.0),
+                      child: Text(
+                        kcal + " kcal",
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          fontFamily: "Quicksand",
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
 
-final recipeThumbnail = new Container(
-  margin: EdgeInsets.symmetric(
-    vertical: 16.0,
-  ),
-  alignment: FractionalOffset.centerLeft,
-  child: Image(
-    image: AssetImage("Images/recipe1.jpg"),
-    height: 92.0,
-    width: 92.0,
-  ),
-);
+/* Circular image*/
+
+Positioned myImages(String images) {
+  return Positioned(
+      top: 0.0,
+      left: 20.0,
+      child: Container(
+        width: 200.0,
+        height: 200.0,
+        decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            image: DecorationImage(
+              fit: BoxFit.fill,
+              image: NetworkImage(
+                images,
+              ),
+            )),
+      ));
+}

@@ -5,6 +5,7 @@ INJECTED from C:\Users\mithu\AndroidStudioProjects\flutter-recipe\android\app\sr
 INJECTED from C:\Users\mithu\AndroidStudioProjects\flutter-recipe\android\app\src\main\AndroidManifest.xml:1:1-47:12
 INJECTED from C:\Users\mithu\AndroidStudioProjects\flutter-recipe\android\app\src\main\AndroidManifest.xml:1:1-47:12
 MERGED from C:\Users\mithu\AndroidStudioProjects\flutter-recipe\android\app\src\main\AndroidManifest.xml:1:1-47:12
+MERGED from [:hexcolor] C:\Users\mithu\AndroidStudioProjects\flutter-recipe\build\hexcolor\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.fragment:fragment:1.0.0] C:\Users\mithu\.gradle\caches\transforms-2\files-2.1\b8b68c04ee72209a3beca37e17f7088d\fragment-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\mithu\.gradle\caches\transforms-2\files-2.1\f046f38cf99e9cbe4891b184ce64db19\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\mithu\.gradle\caches\transforms-2\files-2.1\0f0610cdcf96e6cfa9529b6a3246e3f6\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -105,6 +106,8 @@ uses-sdk
 INJECTED from C:\Users\mithu\AndroidStudioProjects\flutter-recipe\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\mithu\AndroidStudioProjects\flutter-recipe\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\mithu\AndroidStudioProjects\flutter-recipe\android\app\src\main\AndroidManifest.xml
+MERGED from [:hexcolor] C:\Users\mithu\AndroidStudioProjects\flutter-recipe\build\hexcolor\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:hexcolor] C:\Users\mithu\AndroidStudioProjects\flutter-recipe\build\hexcolor\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [androidx.fragment:fragment:1.0.0] C:\Users\mithu\.gradle\caches\transforms-2\files-2.1\b8b68c04ee72209a3beca37e17f7088d\fragment-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.fragment:fragment:1.0.0] C:\Users\mithu\.gradle\caches\transforms-2\files-2.1\b8b68c04ee72209a3beca37e17f7088d\fragment-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\mithu\.gradle\caches\transforms-2\files-2.1\f046f38cf99e9cbe4891b184ce64db19\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44

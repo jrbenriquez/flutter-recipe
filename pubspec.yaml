@@ -24,6 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
   floating_search_bar: ^0.3.0
+  hexcolor: ^1.0.2
+
 
 
 
@@ -40,6 +42,12 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+  fonts:
+    - family: Quicksand
+      fonts:
+        - asset: lib/Fonts/Quicksand-Bold.ttf
+        - asset: lib/Fonts/Quicksand-Medium.ttf
+          style: italic
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
