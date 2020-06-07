@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:receipeapp/Screens/detailscreen.dart';
+import 'package:receipeapp/Widgets/CircleImage.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,15 +15,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Recipe App Title Test',
       theme: ThemeData(),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      initialRoute: MyHomePage.id,
+      routes: {
+        MyHomePage.id: (context) => MyHomePage(),
+        DetailScreen.id: (context) => DetailScreen(),
+      },
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
+  static String id = 'home_screen';
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -105,20 +109,25 @@ class _MyHomePageState extends State<MyHomePage> {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: <Widget>[
-                Container(
-                  width: 300.0,
-                  height: 300.0,
-                  color: Hexcolor("#FFECD9"),
-                  child: Stack(
-                    children: <Widget>[
-                      CenterRecipe(
-                        "Pancakes",
-                        "120",
-                      ),
-                      myImages(
-                        "https://res.cloudinary.com/norgesgruppen/images/c_scale,dpr_auto,f_auto,q_auto:eco,w_1600/a9ezar46fbxjvuyd8r2z/hjemmelaget-italiensk-pizza-med-bacon",
-                      ),
-                    ],
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, DetailScreen.id);
+                  },
+                  child: Container(
+                    width: 300.0,
+                    height: 300.0,
+                    color: Hexcolor("#FFECD9"),
+                    child: Stack(
+                      children: <Widget>[
+                        CenterRecipe(
+                          "Pancakes",
+                          "120",
+                        ),
+                        CircleImage(
+                          "https://res.cloudinary.com/norgesgruppen/images/c_scale,dpr_auto,f_auto,q_auto:eco,w_1600/a9ezar46fbxjvuyd8r2z/hjemmelaget-italiensk-pizza-med-bacon",
+                        ),
+                      ],
+                    ),
                   ),
                 )
               ],
@@ -221,24 +230,4 @@ CenterRecipe(String recipe, String kcal) {
       ),
     ),
   );
-}
-
-/* Circular image*/
-
-Positioned myImages(String images) {
-  return Positioned(
-      top: 0.0,
-      left: 20.0,
-      child: Container(
-        width: 200.0,
-        height: 200.0,
-        decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            image: DecorationImage(
-              fit: BoxFit.fill,
-              image: NetworkImage(
-                images,
-              ),
-            )),
-      ));
 }
