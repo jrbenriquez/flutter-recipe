@@ -61,23 +61,49 @@ class StepEntry extends StatelessWidget {
       padding: EdgeInsets.only(
         right: 25,
         left: 10.0,
-        top: initialStep ? 10.0 : 40.0,
+        top: 0.0,
       ),
-      child: Row(
+      child: Column(
         children: <Widget>[
-          Container(
-            height: 5.0,
-            width: 5.0,
-            decoration: BoxDecoration(
-              color: Hexcolor('#F9AF9C'),
-              shape: BoxShape.circle,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Expanded(
+                flex: 1,
+                child: Container(
+                  width: 5.0,
+                  height: initialStep ? 0 : 40,
+                  decoration: BoxDecoration(
+                    color: Hexcolor('#F9AF9C'),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 69,
+                child: SizedBox(
+                  height: 10.0,
+                ),
+              )
+            ],
           ),
-          SizedBox(
-            width: 40.0,
-          ),
-          Flexible(
-            child: Text(text),
+          Row(
+            children: <Widget>[
+              Container(
+                height: 5.0,
+                width: 5.0,
+                decoration: BoxDecoration(
+                  color: Hexcolor('#F9AF9C'),
+                  shape: BoxShape.circle,
+                ),
+              ),
+              SizedBox(
+                width: 40.0,
+              ),
+              Flexible(
+                child: Text(text),
+              ),
+            ],
           ),
         ],
       ),
