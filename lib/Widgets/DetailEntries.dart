@@ -29,7 +29,7 @@ class IngredientsEntry extends StatelessWidget {
             child: Align(
               alignment: Alignment.centerRight,
               child: Text(
-                '${quantity}',
+                '$quantity',
                 style: kSecondaryTextStyle,
               ),
             ),

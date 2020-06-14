@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:receipeapp/Screens/detailscreen.dart';
-import 'package:receipeapp/Widgets/CircleImage.dart';
-import 'package:receipeapp/Widgets/Misc.dart';
+import 'package:receipeapp/Widgets/MainScreenWidgets.dart';
 
 class MainScreen extends StatefulWidget {
   static String id = 'main_screen';
@@ -14,10 +12,26 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _counter = 0;
 
+  ScrollController _scrollController;
+
   void _incrementCounter() {
     setState(() {
       _counter++;
     });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _scrollController
+        .dispose(); // it is a good practice to dispose the controller
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
   }
 
   @override
@@ -44,72 +58,44 @@ class _MainScreenState extends State<MainScreen> {
           SizedBox(
             height: 50.0,
           ),
+          MainTextHeader(),
           Container(
-            margin: EdgeInsets.symmetric(
-              horizontal: 24.0,
-            ),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "Simple way to find",
-                style: TextStyle(
-                  fontFamily: "Quicksand",
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25.0,
-                ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(
-              horizontal: 24.0,
-            ),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "tasty recipes",
-                style: TextStyle(
-                  fontFamily: "Quicksand",
-                  color: Hexcolor("#f9af9c"),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25.0,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 25.0,
-          ),
-          Container(
-            height: 350.0,
-            padding: EdgeInsets.only(
-              left: 60.0,
-            ),
+            height: 400.0,
             child: ListView(
+              padding: EdgeInsets.only(
+                left: 50.0,
+                right: 50.0,
+              ),
+              controller: _scrollController,
               scrollDirection: Axis.horizontal,
               children: <Widget>[
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, DetailScreen.id);
-                  },
-                  child: Container(
-                    width: 300.0,
-                    height: 300.0,
-                    color: Hexcolor("#FFECD9"),
-                    child: Stack(
-                      children: <Widget>[
-                        CenterRecipe(
-                          "Pancakes",
-                          "120",
-                        ),
-                        CircleImage(
-                          "https://res.cloudinary.com/norgesgruppen/images/c_scale,dpr_auto,f_auto,q_auto:eco,w_1600/a9ezar46fbxjvuyd8r2z/hjemmelaget-italiensk-pizza-med-bacon",
-                        ),
-                      ],
-                    ),
-                  ),
-                )
+                RecipeCard(
+                  recipeImageURL:
+                      "https://res.cloudinary.com/norgesgruppen/images/c_scale,dpr_auto,f_auto,q_auto:eco,w_1600/a9ezar46fbxjvuyd8r2z/hjemmelaget-italiensk-pizza-med-bacon",
+                  name: 'Pancakes',
+                  cookTime: 10,
+                  timeUnit: 'min',
+                  energy: 420,
+                  energyUnit: 'kcal',
+                ),
+                RecipeCard(
+                  recipeImageURL:
+                      "https://res.cloudinary.com/norgesgruppen/images/c_scale,dpr_auto,f_auto,q_auto:eco,w_1600/a9ezar46fbxjvuyd8r2z/hjemmelaget-italiensk-pizza-med-bacon",
+                  name: 'Pancakes',
+                  cookTime: 10,
+                  timeUnit: 'min',
+                  energy: 420,
+                  energyUnit: 'kcal',
+                ),
+                RecipeCard(
+                  recipeImageURL:
+                      "https://res.cloudinary.com/norgesgruppen/images/c_scale,dpr_auto,f_auto,q_auto:eco,w_1600/a9ezar46fbxjvuyd8r2z/hjemmelaget-italiensk-pizza-med-bacon",
+                  name: 'Pancakes',
+                  cookTime: 10,
+                  timeUnit: 'min',
+                  energy: 420,
+                  energyUnit: 'kcal',
+                ),
               ],
             ),
           ),
@@ -117,16 +103,25 @@ class _MainScreenState extends State<MainScreen> {
             height: 25.0,
           ),
           Container(
-            color: Hexcolor("#f9af9c"),
             height: 30.0,
             width: 200.0,
-            child: Text(
-              "Add new recipe",
-              style: TextStyle(
-                fontSize: 20.0,
-                color: Colors.white,
+            decoration: BoxDecoration(
+              color: Hexcolor("#f9af9c"),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10),
+                bottomLeft: Radius.circular(10),
+                bottomRight: Radius.elliptical(50, 18),
+                topRight: Radius.elliptical(50, 18),
               ),
-              textAlign: TextAlign.center,
+            ),
+            child: Center(
+              child: Text(
+                "Add new recipe",
+                style: TextStyle(
+                  fontSize: 20.0,
+                  color: Colors.white,
+                ),
+              ),
             ),
           ),
         ],

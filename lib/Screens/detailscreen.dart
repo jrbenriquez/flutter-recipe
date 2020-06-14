@@ -154,8 +154,9 @@ class DetailHeaderCard extends StatelessWidget {
                   right: 25.0,
                 ),
                 child: Center(
-                  child: CircleImage(
-                    "https://res.cloudinary.com/norgesgruppen/images/c_scale,dpr_auto,f_auto,q_auto:eco,w_1600/a9ezar46fbxjvuyd8r2z/hjemmelaget-italiensk-pizza-med-bacon",
+                  child: CircleNetworkImage(
+                    imageURL:
+                        "https://res.cloudinary.com/norgesgruppen/images/c_scale,dpr_auto,f_auto,q_auto:eco,w_1600/a9ezar46fbxjvuyd8r2z/hjemmelaget-italiensk-pizza-med-bacon",
                     radius: 225.0,
                   ),
                 ),
