@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:receipeapp/Widgets/MainScreenWidgets.dart';
+import 'package:receipeapp/Screens/addrecipe.dart';
 
 class MainScreen extends StatefulWidget {
   static String id = 'main_screen';
@@ -10,15 +11,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _counter = 0;
-
   ScrollController _scrollController;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   void dispose() {
@@ -102,36 +95,44 @@ class _MainScreenState extends State<MainScreen> {
           SizedBox(
             height: 25.0,
           ),
-          Container(
-            height: 30.0,
-            width: 200.0,
-            decoration: BoxDecoration(
-              color: Hexcolor("#f9af9c"),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10),
-                bottomLeft: Radius.circular(10),
-                bottomRight: Radius.elliptical(50, 18),
-                topRight: Radius.elliptical(50, 18),
-              ),
-            ),
-            child: Center(
-              child: Text(
-                "Add new recipe",
-                style: TextStyle(
-                  fontSize: 20.0,
-                  color: Colors.white,
+          Row(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.fromLTRB(100, 0, 0, 0),
+                height: 30.0,
+                width: 200.0,
+                decoration: BoxDecoration(
+                  color: Hexcolor("#f9af9c"),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    bottomLeft: Radius.circular(10),
+                    bottomRight: Radius.elliptical(50, 18),
+                    topRight: Radius.elliptical(50, 18),
+                  ),
+                ),
+                child: Center(
+                  child: Text(
+                    "Add new recipe",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ),
-            ),
+              IconButton(
+                iconSize: 40,
+                color: Hexcolor("#f9af9c"),
+                icon: Icon(
+                  Icons.add,
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, AddRecipe.id);
+                },
+              ),
+            ],
           ),
         ],
-      ),
-
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Hexcolor("#f9af9c"),
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'mainscreen.dart';
 
 class AddRecipe extends StatefulWidget {
   static String id = 'add_recipe';
@@ -9,54 +10,65 @@ class AddRecipe extends StatefulWidget {
   _AddRecipeState createState() => _AddRecipeState();
 }
 
-//Todo try to get the yellow underline from text away.
-
 //Todo fix the shape of the buttons + the elevation.
 
 class _AddRecipeState extends State<AddRecipe> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Column(
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Container(
-                child: Icon(
-                  Icons.arrow_back,
-                  size: 40,
-                  color: Colors.white,
+    return Scaffold(
+      body: Container(
+        color: Colors.white,
+        child: Column(
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Container(
+                  child: GestureDetector(
+                    onTap: () => {Navigator.pushNamed(context, MainScreen.id)},
+                    child: Container(
+                      alignment: Alignment(-0.9, 0.0),
+                      child: Icon(
+                        Icons.arrow_back,
+                        size: 40,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  color: Hexcolor('#F9AF9C'),
+                  height: 60.0,
+                  width: 411.0,
                 ),
-                color: Hexcolor('#F9AF9C'),
-                height: 60.0,
-                width: 411.0,
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-            //Todo add a icon
-            //Todo make the icon clickable.
-
-            child: CircleAvatar(
-              radius: 80,
-              backgroundColor: Hexcolor('#F9AF9C'),
+              ],
             ),
-          ),
-          SizedBox(
-            height: 5.0,
-          ),
-          Input(),
-        ],
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              child: GestureDetector(
+                child: CircleAvatar(
+                  child: Container(
+                    child: Icon(
+                      Icons.add_a_photo,
+                      size: 40.0,
+                      color: Colors.white,
+                    ),
+                  ),
+                  radius: 80,
+                  backgroundColor: Hexcolor('#F9AF9C'),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 5.0,
+            ),
+            Input(),
+          ],
+        ),
       ),
     );
   }
 }
 
-/* Bad widget made by Mithu */
 class Input extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -77,30 +89,51 @@ class Input extends StatelessWidget {
         ),
         child: ListView(
           children: <Widget>[
-            Row(
+            Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text(
-                  'Title',
-                  style: TextStyle(
-                    color: Hexcolor('#F9AF9C'),
-                    fontSize: 20,
+                Container(
+                  alignment: Alignment(-1, 0.0),
+                  child: Text(
+                    'Title',
+                    style: TextStyle(
+                      color: Hexcolor('#F9AF9C'),
+                      fontSize: 20,
+                    ),
                   ),
                 ),
-                //TODO Add textInputField
+                TextField(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: "Enter a title...",
+                  ),
+                ),
               ],
             ),
             SizedBox(
               height: 20,
             ),
-            Text(
-              'Time to make',
-              style: TextStyle(
-                color: Hexcolor('#F9AF9C'),
-                fontSize: 20,
-              ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Container(
+                  alignment: Alignment(-1, 0.0),
+                  child: Text(
+                    'Time to make',
+                    style: TextStyle(
+                      color: Hexcolor('#F9AF9C'),
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: "Enter time to make...",
+                  ),
+                ),
+              ],
             ),
-            //TODO Add textInputField
             SizedBox(
               height: 20,
             ),
@@ -114,26 +147,28 @@ class Input extends StatelessWidget {
             SizedBox(
               height: 5.0,
             ),
+            //Todo can extract this widget later for the next entries.
             Row(
               children: <Widget>[
-                Text(
-                  "All purpose flour",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
+                Container(
+                  child: Text(
+                    "All purpose flour",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 17,
+                    ),
                   ),
                 ),
-
-                //Todo make a column for each entry so that the first TextWidget is to the left and the other to the right.
-
                 SizedBox(
-                  width: 10.0,
+                  width: 180.0,
                 ),
-                Text(
-                  "2 cups",
-                  style: TextStyle(
-                    color: Colors.grey.shade400,
-                    fontSize: 16,
+                Container(
+                  child: Text(
+                    "2 cups",
+                    style: TextStyle(
+                      color: Colors.grey.shade600,
+                      fontSize: 17,
+                    ),
                   ),
                 ),
               ],
@@ -168,6 +203,7 @@ class Input extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
+            //Todo use this row as a "steps widget" to add for each new step.
             Row(
               children: <Widget>[
                 Text(
@@ -183,13 +219,12 @@ class Input extends StatelessWidget {
                 Text(
                   "Preheat the oven to 450 degrees",
                   style: TextStyle(
-                    color: Colors.grey.shade800,
-                    fontSize: 16,
+                    color: Colors.black,
+                    fontSize: 17,
                   ),
                 ),
               ],
             ),
-            //Todo make a column for each entry so that the first TextWidget is to the left and the other to the right.
             new Container(
               padding:
                   const EdgeInsets.only(left: 40.0, right: 30.0, top: 20.0),

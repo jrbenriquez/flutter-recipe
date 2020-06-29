@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:receipeapp/Screens/addrecipe.dart';
 import 'package:receipeapp/Screens/detailscreen.dart';
 import 'package:receipeapp/Screens/mainscreen.dart';
 
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       routes: {
         MainScreen.id: (context) => MainScreen(),
         DetailScreen.id: (context) => DetailScreen(),
+        AddRecipe.id: (context) => AddRecipe(),
       },
     );
   }

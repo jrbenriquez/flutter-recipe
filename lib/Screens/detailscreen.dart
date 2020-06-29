@@ -27,6 +27,55 @@ class _DetailScreenState extends State<DetailScreen> {
   }
 }
 
+class DetailHeaderCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 1,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 20.0,
+              horizontal: 25.0,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                CircleButton(
+                  icon: Icons.keyboard_arrow_left,
+                ),
+                CircleButton(
+                  icon: Icons.share,
+                ),
+              ],
+            ),
+          ),
+          //TODO Need to figure out how to do overlapping oversized photos so we can follow the design
+          Stack(
+            overflow: Overflow.clip,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(
+                  right: 25.0,
+                ),
+                child: Center(
+                  child: CircleNetworkImage(
+                    imageURL:
+                        "https://res.cloudinary.com/norgesgruppen/images/c_scale,dpr_auto,f_auto,q_auto:eco,w_1600/a9ezar46fbxjvuyd8r2z/hjemmelaget-italiensk-pizza-med-bacon",
+                    radius: 225.0,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class DetailInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -115,55 +164,6 @@ class DetailInfoCard extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class DetailHeaderCard extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      flex: 1,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 20.0,
-              horizontal: 25.0,
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                CircleButton(
-                  icon: Icons.keyboard_arrow_left,
-                ),
-                CircleButton(
-                  icon: Icons.share,
-                ),
-              ],
-            ),
-          ),
-          //TODO Need to figure out how to do overlapping oversized photos so we can follow the design
-          Stack(
-            overflow: Overflow.clip,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(
-                  right: 25.0,
-                ),
-                child: Center(
-                  child: CircleNetworkImage(
-                    imageURL:
-                        "https://res.cloudinary.com/norgesgruppen/images/c_scale,dpr_auto,f_auto,q_auto:eco,w_1600/a9ezar46fbxjvuyd8r2z/hjemmelaget-italiensk-pizza-med-bacon",
-                    radius: 225.0,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
       ),
     );
   }
