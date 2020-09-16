@@ -1,4 +1,4 @@
-# receipeapp
+# Receipeapp
 
 A Receipe App made with Flutter
 
