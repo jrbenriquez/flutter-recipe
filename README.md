@@ -15,6 +15,8 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+## Beautiful UI
+
 <img align="left" width="400" height="700" src="https://github.com/jrbenriquez/flutter-recipe/blob/master/flutter1.PNG">
 
 <img align="right" width="400" height="700" src="https://github.com/jrbenriquez/flutter-recipe/blob/master/flutter2.PNG">
